@@ -14,19 +14,14 @@ Para este desafio, você vai receber uma string como 800-692-7753 ou 8oo-six4276
 function telephoneCheck(str) {
 
 //verifica se a str pode ser um numero valido
-let strRegex1 = /(\d{1})* *(\d{3})-\1-(\d{4})$|(\d{1})* *(\d{3}) *\1 *(\d{4})$|(\d{1})*\((\d{3})\) *\1 *(\d{4})$|(\d{1})*\((\d{3})\) (\d{3})-(\d{4})$|(\d{1})* *(\d{3}) *\1 *(\d{4})$|\d{10}/;
+let strRegex1 = /^(1)* *\((\d{3})\) *(\d{3})( |-)*(\d{4})|^(1)* *(\d{3})-(\d{3})-(\d{4})|^(1)* *(\d{3}) (\d{3}) (\d{4})|^\d{10}$/;
 
 if(strRegex1.test(str)){
-    console.log("Chegou aqui")
     //verifica se o numero tem mais de 10 digitos e se o primeiro e igual a 1
     let strRegex2 = /\d/g;
     let strNum = str.match(strRegex2);
-    console.log(strNum.length);
-
-    if (str[0] == "-"){
-        return false;
-    }
-    else if (strNum.length == 11) {
+    
+    if (strNum.length == 11) {
         if(strNum[0] == 1){
             return true;
         } else {
@@ -45,4 +40,4 @@ if(strRegex1.test(str)){
     return false;
 }
 }
-console.log(telephoneCheck("1 555 555 5555"));
+console.log(telephoneCheck("7376227382)"));
